@@ -1,9 +1,11 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-using System;
+using UnityEngine.UI;
 
+/// <summary>
+/// Gets attached to a text object in the level to load from the best time for this level from save file and display it.
+/// </summary>
 public class BestTime : MonoBehaviour {
 
     private GameManager gameManager; 

@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Keys : MonoBehaviour {
 
@@ -28,6 +27,7 @@ public class Keys : MonoBehaviour {
         if (clip != null)
             audioSource.PlayOneShot(clip);
 
+        // Dont add the key if we already have a key of the same ID
         if (!keys.Contains(keyId)) keys.Add(keyId);
         
     }

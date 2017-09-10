@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class ArrowKeyMovement : MonoBehaviour {
 
@@ -27,8 +26,6 @@ public class ArrowKeyMovement : MonoBehaviour {
 
     private float hAxis = 0;
 
-    /// /////////////////////////////////////////////////////////////////////////////////////
-    /// Runs code on start of scene
     void Start()
     {
         onWallLeft = false;                         //Start off not on the wall
@@ -39,8 +36,6 @@ public class ArrowKeyMovement : MonoBehaviour {
 
     }
 
-    /// /////////////////////////////////////////////////////////////////////////////////////
-    /// Update is called once per frame
     private void Update()
     {
         // Want to collect input in Update to make sure we dont miss a keypress
@@ -94,8 +89,6 @@ public class ArrowKeyMovement : MonoBehaviour {
 
     }
 
-    /// /////////////////////////////////////////////////////////////////////////////////////
-    /// Check for collisions when entering a trigger
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("WallSideLeft"))      //Detects when hitting a left wall
@@ -120,8 +113,7 @@ public class ArrowKeyMovement : MonoBehaviour {
         //if (onWall)        
         //    Debug.Log("Trigger Enter: OnWallLeft: " + onWallLeft + " OnWallRight: " + onWallRight + " OnWallFront " + onWallFront + " OnWallBack " + onWallBack);
     }
-    /// /////////////////////////////////////////////////////////////////////////////////////
-    /// Checks for leaving a trigger 
+
     void OnTriggerExit(Collider col)
     {
         if (col.gameObject.CompareTag("WallSideLeft"))    //Detects when hitting a left wall

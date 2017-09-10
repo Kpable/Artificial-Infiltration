@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
+// Used for the corners and Camera Focus Point
 public class FollowPlayerVerticalPosition : MonoBehaviour {
 
     private GameObject player;

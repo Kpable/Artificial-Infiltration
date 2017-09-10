@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 // This class will assume the X axis is horizontal with the positive end going to the right
 // and the Z axis will be vertical with the positive going up.

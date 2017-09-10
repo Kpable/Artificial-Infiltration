@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Corner_Switch : MonoBehaviour {
 
@@ -10,14 +9,10 @@ public class Corner_Switch : MonoBehaviour {
 
     private EdgeOfCube edge;
 
-
-	/// /////////////////////////////////////////////////////////////////////////////////////
-	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Player");
 		cameraObject = GameObject.Find ("Main Camera");
 	}
-	/// /////////////////////////////////////////////////////////////////////////////////////
 
     void OnTriggerEnter(Collider col)
     {

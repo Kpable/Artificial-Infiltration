@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PlayerEdgeMovement : MonoBehaviour {
 
@@ -9,7 +8,7 @@ public class PlayerEdgeMovement : MonoBehaviour {
 
     public float movementTime = 0.3f;       // Total movement duration
 
-    public float amountPushedFromCorner = 1f;
+    public float amountPushedFromCorner = 1f;   // Give the player a slight shove onto the edge
 
     private float currentRotationTime;      // Current amount of time passed since rotation start
     private float currentMovementTime;      // Current amount of time passed since movement start

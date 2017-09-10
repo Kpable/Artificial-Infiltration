@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class LiftTrigger : MonoBehaviour {
 
@@ -15,7 +14,7 @@ public class LiftTrigger : MonoBehaviour {
 
     void Awake()
     {
-        liftTargets = new List<Rigidbody>();                    //Strangle prevention comment!
+        liftTargets = new List<Rigidbody>();                    //Strangle prevention comment! I commented so you cant strangle me for not doing so
     }
 
     void FixedUpdate()
@@ -52,7 +51,7 @@ public class LiftTrigger : MonoBehaviour {
             if ( liftTargets.Contains(body) )                       //Check if it's currently in the list of bodies
             {
                 bool success = liftTargets.Remove(body);            //Remove them if they are
-                if (!success) Debug.LogWarning("Failed to remove body: " + body.gameObject.name);
+                if (!success) Debug.LogWarning("Failed to let go of this body: " + body.gameObject.name);
             }
         }
     }

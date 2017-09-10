@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class DoorTrigger : MonoBehaviour {
 
@@ -71,9 +70,9 @@ public class DoorTrigger : MonoBehaviour {
             if (doorObject.transform.rotation.eulerAngles.y == destinationAngle || 
                 doorObject.transform.rotation.eulerAngles.y == 360 + destinationAngle)       // If we've reached our destination! 
             {
-                opening = false;
+                opening = false;        // Stop opening already
 
-                //precautionary so the player doesnt get stuck after the door is open
+                // Precautionary so the player doesnt get stuck after the door is open
                 doorObject.GetComponentInChildren<Collider>().isTrigger = true;
 
                 if (closeAfterOpening)            // (reset) If you are moving back dont move back again. 
@@ -82,9 +81,10 @@ public class DoorTrigger : MonoBehaviour {
                 }
             }
         }
-        else if (closing)
+        else if (closing)       // If we are closing the door...
         {
-            CloseDoor();
+            CloseDoor();        // ...do the thing
+
             if (doorObject.transform.rotation.eulerAngles.y == 0)       // If we've reached our destination! 
             {
                 closing = false;
@@ -124,7 +124,7 @@ public class DoorTrigger : MonoBehaviour {
                 }
                 else
                 {
-                    opening = true;                // If not locked just move right along
+                    opening = true;                // If not locked just move right along... nothing to see here
                     doorOpen = true;
                     LightsChange();
                 }

@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Steamworks;
 using UnityEngine;
-using Steamworks;
 
 
 public enum Achievements
@@ -124,9 +122,4 @@ public class SteamAchievements : MonoBehaviour {
             }
         }
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

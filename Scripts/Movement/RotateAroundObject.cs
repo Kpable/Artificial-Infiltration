@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RotateAroundObject : MonoBehaviour {
 
-    public Transform target;
+    public Transform target;            // Object to rotate around
     public float rotateSpeed = 3f;
 
     float angle = 0;
-    public float radius = 10;
+    public float radius = 10;           // Distance from object
 
 	// Use this for initialization
 	void Start () {

@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
-using System;
+using UnityEngine;
 
 public enum EdgeOfCube { Bottom, Right, Top, Left, BottomRightCorner, BottomLeftCorner, TopRightCorner, TopLeftCorner, Lost }
 
@@ -12,7 +12,7 @@ public static class EnumUtils
 {
 
     #region Enum Direction
-    //Extension method to get the Vector3 based on the direction. Not really necessary but 
+    // Extension method to get the Vector3 based on the direction. Not really necessary but 
     // thought it would be easier to select from a drop down rather than inputting a Vector3
     // in the editor. 
     public static Vector3 Vec(this Direction dir)
@@ -136,7 +136,7 @@ public static class EnumUtils
 
         //float offset = t.localScale.x / 2;
         //TODO fixed values often cause issues. 
-        float offset = 0.5f;
+        float offset = 0.5f; // currently size of player/2
         float edgePos = (cube.cubeSize / 2) - offset;
         Vector3 cubeOffset = cube.transform.position;
 
@@ -183,6 +183,7 @@ public static class EnumUtils
     public static Vector3 Pos(this EdgeOfCube edge, Transform target)
     {
         Vector3 pos = target.position;
+        // Find out what cube the player is on
         CubeSpace cube = CubeEdges.DetectNearestCube(target);
 
         float targetOffset = target.localScale.x / 2;
@@ -227,7 +228,8 @@ public static class EnumUtils
 
         return pos;
     }
-
+    
+    // Returns the axis points to the right
     public static float LeftRightAxis(this EdgeOfCube edge, Vector3 vector)
     {
         float value = 0;
@@ -295,6 +297,7 @@ public static class CubeEdges
 
             currentDistance = Vector3.Distance(t.position, currentCube.origin);
 
+            // If first entry or this entry is closer than the previous
             if (i == 0 || minDistance > currentDistance )
             {
                 minDistance = currentDistance;
@@ -313,20 +316,20 @@ public static class CubeEdges
     {
         EdgeOfCube edge = EdgeOfCube.Lost;
 
-        // Angle may not be perfect
+        // Angle may not be perfect and thats what we strive for here
         float roundedAngle = Mathf.Round(angle / 45) * 45;
 
-        //// Lets stick with small numbers -360 to 360 degrees
+        // Lets stick with small numbers -360 to 360 degrees
         if (roundedAngle >= 360) roundedAngle -= 360;
         if (roundedAngle <= -360) roundedAngle += 360;
 
-        // Bottom
-        if (roundedAngle == 0 || roundedAngle == 360 || roundedAngle == -360) edge = EdgeOfCube.Right;
-        // Left
-        else if (roundedAngle == 90 || roundedAngle == -270) edge = EdgeOfCube.Top;
-        // Top
-        else if (roundedAngle == 180 || roundedAngle == -180) edge = EdgeOfCube.Left;
         // Right
+        if (roundedAngle == 0 || roundedAngle == 360 || roundedAngle == -360) edge = EdgeOfCube.Right;
+        // Top
+        else if (roundedAngle == 90 || roundedAngle == -270) edge = EdgeOfCube.Top;
+        // Left
+        else if (roundedAngle == 180 || roundedAngle == -180) edge = EdgeOfCube.Left;
+        // Bottom
         else if (roundedAngle == 270 || roundedAngle == -90) edge = EdgeOfCube.Bottom;
         // BottomRight
         else if (roundedAngle == 315 || roundedAngle == -45) edge = EdgeOfCube.BottomRightCorner;
@@ -351,7 +354,7 @@ public static class CubeEdges
         // Angle may not be perfect based on initial position
         float roundedAngle = Mathf.Round(angle / 90) * 90;
 
-        //// Lets stick with small numbers -360 to 360 degrees
+        // Lets stick with small numbers -360 to 360 degrees
         if (roundedAngle >= 360) roundedAngle -= 360;
         if (roundedAngle <= -360) roundedAngle += 360;
 
@@ -383,7 +386,7 @@ public static class CubeEdges
         return edge;
     }
 
-    //Clamp position to Cube Edges
+    //Clamp position to a Cube Edge
     public static Vector3 Clamp(Transform t)
     {
         CubeSpace nearestCube = DetectNearestCube(t);
@@ -433,8 +436,9 @@ public static class CubeEdges
         return pos;
     }
 
-    //Finds what edge the object is on. 
+    // Finds what edge the object is on. 
     // Should not be called on Awake because Detect Closest requires Pos which requires CubeSize.Awake to complete
+    // I suppose script execution order can be modified but why play with that
     public static EdgeOfCube DetectEdge(Transform t)
     {
         EdgeOfCube edge = EdgeOfCube.Lost;
@@ -458,10 +462,10 @@ public static class CubeEdges
             edge = EdgeOfCube.TopLeftCorner;
         // BottomRightCorner
         if (t.position.x == edgeDistance + cubePos.x && t.position.z == -edgeDistance + cubePos.z)
-            edge = EdgeOfCube.TopRightCorner;
+            edge = EdgeOfCube.BottomRightCorner;
         // BottomLeftCorner
         else if (t.position.x == -edgeDistance + cubePos.x && t.position.z == -edgeDistance + cubePos.z)
-            edge = EdgeOfCube.TopLeftCorner;
+            edge = EdgeOfCube.BottomLeftCorner;
 
         // Sides
 
@@ -485,6 +489,7 @@ public static class CubeEdges
             //Debug.Log(t.gameObject.name + ": Is lost beyond the edges. Position: " + t.position.ToString());
         }
 
+        // Okay i lied, i will try one more thing to find you an edge.
         if (edge == EdgeOfCube.Lost)
             edge = DetectClosestEdge(t);
 

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class TeleportTrigger : MonoBehaviour {
 
@@ -15,7 +14,7 @@ public class TeleportTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log(name + " was triggered by: " + col.gameObject.name);
+        //Debug.Log(name + " was triggered by: " + col.gameObject.name);
 
         if (col.gameObject.CompareTag("Player"))
         {
@@ -27,8 +26,10 @@ public class TeleportTrigger : MonoBehaviour {
 
             // let the player move through solid objects
             col.gameObject.GetComponent<BoxCollider>().enabled = false;
-            Debug.Log("Teleport Trigger: " + name + " at position " + transform.position);
-            // Rotate the player appropiately and move him to our teleport destination
+            
+            //Debug.Log("Teleport Trigger: " + name + " at position " + transform.position);
+            
+            // Rotate the player appropriately and move him to our teleport destination
             col.gameObject.GetComponent<PlayerEdgeMovement>().MoveAndRotateToEdgePosition(teleportDestination);
 
             // Move and rotate the camera as well. 

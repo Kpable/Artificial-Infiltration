@@ -1,7 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System;
 
 [RequireComponent (typeof (Text))]
 public class InGameTimer : MonoBehaviour {

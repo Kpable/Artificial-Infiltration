@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-
 
 //TODO Custom Sizing seems pointless now that EdgeOfCube has position information. 
 // If pointless remove. 

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class ClampToCubeEdges : MonoBehaviour {
 
@@ -20,7 +19,7 @@ public class ClampToCubeEdges : MonoBehaviour {
 
     // Update is called once per frame
     void LateUpdate () {
-        // Added to reduce the number of calls to detection methods. 
+        // Added to reduce the number of calls to detection methods. Theres as whole lotta maths over there. 
         if (continuousClamping)
         {
             Clamp();

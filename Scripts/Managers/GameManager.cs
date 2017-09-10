@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
@@ -147,6 +146,7 @@ public class GameManager : MonoBehaviour {
             //    else
             //        model.SetActive(false);
             //}
+
         }
         else if(mission.buildIndex == 0 && mission.buildIndex == (int)Missions.Total)
         {
@@ -195,14 +195,4 @@ public class GameManager : MonoBehaviour {
         GameData.SaveData(Utils.GetPlayerSaveFilePath(), playerSaveGame);
 
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

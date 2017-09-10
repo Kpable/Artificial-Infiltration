@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class JumpMovement : MonoBehaviour {
 
@@ -67,8 +66,6 @@ public class JumpMovement : MonoBehaviour {
 
     }
 
-    /// /////////////////////////////////////////////////////////////////////////////////////
-    /// Check for collisions when entering a trigger
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("Ground"))            //Detects when hitting the ground

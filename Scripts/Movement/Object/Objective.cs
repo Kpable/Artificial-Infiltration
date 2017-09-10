@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class Objective : MonoBehaviour {
 
@@ -8,7 +7,7 @@ public class Objective : MonoBehaviour {
     [SerializeField]
     private InGameTimer timer;          // The timer so this objective can stop it. 
 
-    private bool missionRunner;
+    private bool missionRunner;         // If we are in Mission Runner mode
 
     private GameManager gameManager;
     private GameObject missionEndMenu;
